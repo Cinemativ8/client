@@ -3,9 +3,9 @@
  }
 
  body {
-   background-image: url(public/img/home/bluehome.jpg);
+   background-image: url(yellow.jpg);
    background-repeat: no-repeat;
-  background-size: cover;
+    background-size: cover;
  }
 
  card {
