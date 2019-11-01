@@ -7,8 +7,8 @@ $(document).ready(function(){
         $('#main-page').hide() 
     }
     register()
-    login()    
-    showCinema()
+    login()
+    showTrending()
 })
 
 function register(){
@@ -29,6 +29,8 @@ function register(){
                 swal("Success!", "Register Successfull!", "success");
                 $('#exampleModal').hide()
                 $('.modal-backdrop').hide()
+                $("#login-page").hide()
+                $("#home-page").show()
             })
             .fail(error=>{
                 swal("Error job!", "You clicked the button!", "error");
@@ -85,4 +87,74 @@ function showCinema(){
             console.log(error)
         })
     })
+}
+function getPoster(movie){
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            method: "POST",
+            url: `http://localhost:3000/omdb/search/`,
+            data: {
+                imdb: movie.movie.ids.imdb
+            }
+        })
+        .done(function (image) {
+            movie["Poster"] = image.Poster;
+            resolve(movie);
+        })
+    });
+}
+
+function showTrending() {
+    let movies = [];
+    $.ajax({
+        method: "GET",
+        url: `http://localhost:3000/movies/trending`,
+        headers: {
+            "token": localStorage.getItem("token")
+        }
+    })
+    .done(function(responses){
+        movies = responses;
+        const promises = [];
+        for (let i = 0; i < responses.length; i++) {
+            promises.push(getPoster(responses[i]));
+        }
+        Promise.all(promises)
+        .then((results) => {
+            showGrid(results);
+        });
+    })
+    .fail(function(err){
+        console.log(err);
+    });
+}
+
+function showGrid (responses) {
+    $("#movies-row").empty();
+    for (let i = 0; i < responses.length; i++) {
+        $("#movies-row").append(
+        `<div class="inner col-2 card">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="${responses[i].Poster}">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">
+                    ${responses[i].movie.title}
+                </span>
+                <p>
+                    <span>${responses[i].watchers} watchers</span>
+                </p>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">
+                    ${responses[i].movie.title}
+                    <i class="material-icons right">close</i>
+                </span>
+                <p>
+                    Produced Year : ${responses[i].movie.year}
+                    IMDB Code : ${responses[i].movie.ids.imdb}
+                </p>
+            </div>
+        </div>`);
+    }   
 }
