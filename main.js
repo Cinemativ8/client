@@ -9,7 +9,10 @@ $(document).ready(function(){
     register()
     login()
     showTrending()
-
+    showPopular()
+    showMostPlayed()
+    showBoxOffice()
+    searchMovie()
 })
 
 
@@ -90,6 +93,7 @@ function showCinema(){
         })
     })
 }
+
 function getPoster(movie){
     return new Promise((resolve, reject) => {
         $.ajax({
@@ -105,7 +109,20 @@ function getPoster(movie){
         })
     });
 }
-
+function getDetail(movie){
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            method: "GET",
+            url: `http://localhost:3000/movies/detail/${movie.movie.ids.slug}`
+        })
+        .done(function (detail) {
+            movie["rating"] = detail.rating;
+            movie["overview"] = detail.overview;
+            movie["trailer"] = detail.trailer;
+            resolve(movie);
+        })
+    });
+}
 function showTrending() {
     let movies = [];
     $.ajax({
@@ -117,11 +134,16 @@ function showTrending() {
     })
     .done(function(responses){
         movies = responses;
-        const promises = [];
+        const promisesImage = [];
+        const promisesDetail = [];
         for (let i = 0; i < responses.length; i++) {
-            promises.push(getPoster(responses[i]));
+            promisesImage.push(getPoster(responses[i]));
+            promisesDetail.push(getDetail(responses[i]));
         }
-        Promise.all(promises)
+        Promise.all(promisesImage)
+        .then((images) => {
+            return Promise.all(promisesDetail)
+        })
         .then((results) => {
             showGrid(results);
         });
@@ -131,9 +153,132 @@ function showTrending() {
     });
 }
 
+
+function showPopular() {
+    $('#show-popular').click(function (event) {
+        event.preventDefault();
+        let movies = [];
+        $.ajax({
+            method: "GET",
+            url: `http://localhost:3000/movies/popular`,
+            headers: {
+                "token": localStorage.getItem("token")
+            }
+        })
+        .done(function(responses){
+            movies = responses;
+            const promises = [];
+            for (let i = 0; i < responses.length; i++) {
+                promises.push(getPoster(responses[i]));
+            }
+            Promise.all(promises)
+            .then((results) => {
+                showGrid(results);
+            });
+        })
+        .fail(function(err){
+            console.log(err);
+        });
+    });
+}
+
+function showMostPlayed() {
+    $('#show-most-played').click(function (event) {
+        event.preventDefault();
+        let movies = [];
+        $.ajax({
+            method: "GET",
+            url: `http://localhost:3000/movies/most-played`,
+            headers: {
+                "token": localStorage.getItem("token")
+            }
+        })
+        .done(function(responses){
+            movies = responses;
+            const promises = [];
+            for (let i = 0; i < responses.length; i++) {
+                promises.push(getPoster(responses[i]));
+            }
+            Promise.all(promises)
+            .then((results) => {
+                showGrid(results);
+            });
+        })
+        .fail(function(err){
+            console.log(err);
+        });
+    });
+}
+
+function showBoxOffice() {
+    $('#show-boxoffice').click(function (event) {
+        event.preventDefault();
+        let movies = [];
+        $.ajax({
+            method: "GET",
+            url: `http://localhost:3000/movies/boxoffice`,
+            headers: {
+                "token": localStorage.getItem("token")
+            }
+        })
+        .done(function(responses){
+            movies = responses;
+            const promises = [];
+            for (let i = 0; i < responses.length; i++) {
+                promises.push(getPoster(responses[i]));
+            }
+            Promise.all(promises)
+            .then((results) => {
+                showGrid(results);
+            });
+        })
+        .fail(function(err){
+            console.log(err);
+        });
+    });
+}
+
+function searchMovie() {
+    $('#search-btn').click(function (event) {
+        event.preventDefault();
+        let movies = [];
+        $.ajax({
+            method: "POST",
+            url: `http://localhost:3000/movies/search`,
+            headers: {
+                "token": localStorage.getItem("token")
+            },
+            data: {
+                "search": $("#search-box").val()
+            }
+        })
+        .done(function(responses){
+            movies = responses;
+            const promises = [];
+            for (let i = 0; i < responses.length; i++) {
+                promises.push(getPoster(responses[i]));
+            }
+            Promise.all(promises)
+            .then((results) => {
+                showGrid(results);
+            });
+        })
+        .fail(function(err){
+            console.log(err);
+        });
+    });
+}
+
 function showGrid (responses) {
     $("#movies-row").empty();
     for (let i = 0; i < responses.length; i++) {
+        let watchers = "";
+        if (responses[i].watchers !== undefined) {
+            watchers = responses[i].watchers;
+        }
+        else if (responses[i].score !== undefined) {
+            watchers = responses[i].score
+        }
         $("#movies-row").append(
         `<div  class="inner col-2 card" style="margin-bottom:25px">
             <div class="card-image waves-effect waves-block waves-light">
@@ -144,7 +289,7 @@ function showGrid (responses) {
                     ${responses[i].movie.title}
                 </span>
                 <p>
-                    <span>${responses[i].watchers} watchers</span>
+                    <span>${watchers} watchers</span>
                 </p>
             </div>
             <div  class="card-reveal" >
@@ -153,8 +298,9 @@ function showGrid (responses) {
                     <i class="material-icons right">close</i>
                 </span>
                 <p>
-                    Produced Year : ${responses[i].movie.year}
-                    IMDB Code : ${responses[i].movie.ids.imdb}
+                    <span>Rating : ${responses[i].rating}</span><br><br>
+                    <span>${responses[i].overview}</span><br><br>
+                    <span><a href="${responses[i].trailer}" target="_blank">Trailer</a></span>
                 </p>
             </div>
         </div>`);
