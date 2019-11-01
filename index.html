@@ -39,7 +39,7 @@
                     </div>
                     <div class="login">
                         <button id="login" type="submit" class="btn btn-primary" style="display: inline;">Login</button>
-                        <div class="g-signin2" data-onsuccess="onSignIn" style="display: inline;"></div>
+                        <div style="float: right;" class="g-signin2" data-onsuccess="onSignIn" style="display: inline;"></div>
                     </div>
                     <div class="register">
                         <p style="margin:10px 0px;">Dont have any account ?</p>
@@ -114,11 +114,9 @@
                 
                 </div>
               </li>
-              <div class="navbar-end">
-                <div class="navbar-item">
-                <a h ref="#" onclick="signOut();" style="color:rgb(131, 128, 128)">Sign out</a>
-
-            <!-- </form> -->
+              <li class="nav-item " style="float: right;">
+                  <a class="nav-link" href="#" onclick="signOut();" style="color:rgb(131, 128, 128)">Sign out</a>
+              </li>
             </ul>
           </div>
         </nav>
