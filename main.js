@@ -133,7 +133,7 @@ function showGrid (responses) {
     $("#movies-row").empty();
     for (let i = 0; i < responses.length; i++) {
         $("#movies-row").append(
-        `<div class="inner col-2 card">
+        `<div class="inner col-2 card" style="margin-bottom:25px">
             <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="${responses[i].Poster}">
             </div>
