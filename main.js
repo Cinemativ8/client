@@ -6,7 +6,6 @@ $(document).ready(function(){
         $('#home-page').show()
         $('#main-page').hide() 
     }
-    console.log('document is ready')
     register()
     login()    
 })
@@ -59,6 +58,22 @@ function login(){
             .fail(error=>{
                 swal("Error!", "Login Failed!", "error");
             })
+        })
+    })
+}
+
+
+function showCinema(){
+    $('#btncinema').click(function(){
+        $.ajax({
+            url: 'http://localhost:3000/cinemas',
+            method: 'GET'
+        })
+        .done(response=>{
+            console.log(response)
+        })
+        .fail(error=>{
+            console.log(error)
         })
     })
 }
