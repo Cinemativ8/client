@@ -129,6 +129,7 @@ function getDetail(movie){
 }
 function showTrending() {
     let movies = [];
+    Swal.showLoading()
     $.ajax({
         method: "GET",
         url: `http://localhost:3000/movies/trending`,
@@ -146,6 +147,7 @@ function showTrending() {
         }
         Promise.all(promisesImage)
         .then((images) => {
+            Swal.close()
             return Promise.all(promisesDetail)
         })
         .then((results) => {
@@ -161,6 +163,7 @@ function showTrending() {
 function showPopular() {
     $('#show-popular').click(function (event) {
         event.preventDefault();
+        Swal.showLoading()
         let movies = [];
         $.ajax({
             method: "GET",
@@ -182,7 +185,7 @@ function showPopular() {
                 return Promise.all(promisesDetail)
             })
             .then((results) => {
-                console.log(results);
+                Swal.close()
                 showGrid(results);
             });
         })
@@ -195,6 +198,7 @@ function showPopular() {
 function showMostPlayed() {
     $('#show-most-played').click(function (event) {
         event.preventDefault();
+        Swal.showLoading()
         let movies = [];
         $.ajax({
             method: "GET",
@@ -216,6 +220,7 @@ function showMostPlayed() {
                 return Promise.all(promisesDetail)
             })
             .then((results) => {
+                Swal.close()
                 showGrid(results);
             });
         })
@@ -228,6 +233,7 @@ function showMostPlayed() {
 function showBoxOffice() {
     $('#show-boxoffice').click(function (event) {
         event.preventDefault();
+        Swal.showLoading()
         let movies = [];
         $.ajax({
             method: "GET",
@@ -249,6 +255,7 @@ function showBoxOffice() {
                 return Promise.all(promisesDetail)
             })
             .then((results) => {
+                Swal.close()
                 showGrid(results);
             });
         })
