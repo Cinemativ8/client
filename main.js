@@ -182,19 +182,20 @@ function showPopular() {
                 "token": localStorage.getItem("token")
             }
         })
-            .done(function (responses) {
-                movies = responses;
-                const promises = [];
-                for (let i = 0; i < responses.length; i++) {
-                    promises.push(getPoster(responses[i]));
-                }
-                Promise.all(promises)
-                    .then((results) => {
-                        showGrid(results);
-                    });
+        .done(function(responses){
+            movies = responses;
+            const promisesImage = [];
+            const promisesDetail = [];
+            for (let i = 0; i < responses.length; i++) {
+                promisesImage.push(getPoster(responses[i]));
+                promisesDetail.push(getDetail(responses[i]));
+            }
+            Promise.all(promisesImage)
+            .then((images) => {
+                return Promise.all(promisesDetail)
             })
-            .fail(function (err) {
-                console.log(err);
+            .then((results) => {
+                showGrid(results);
             });
     });
 }
@@ -210,19 +211,20 @@ function showMostPlayed() {
                 "token": localStorage.getItem("token")
             }
         })
-            .done(function (responses) {
-                movies = responses;
-                const promises = [];
-                for (let i = 0; i < responses.length; i++) {
-                    promises.push(getPoster(responses[i]));
-                }
-                Promise.all(promises)
-                    .then((results) => {
-                        showGrid(results);
-                    });
+        .done(function(responses){
+            movies = responses;
+            const promisesImage = [];
+            const promisesDetail = [];
+            for (let i = 0; i < responses.length; i++) {
+                promisesImage.push(getPoster(responses[i]));
+                promisesDetail.push(getDetail(responses[i]));
+            }
+            Promise.all(promisesImage)
+            .then((images) => {
+                return Promise.all(promisesDetail)
             })
-            .fail(function (err) {
-                console.log(err);
+            .then((results) => {
+                showGrid(results);
             });
     });
 }
@@ -238,19 +240,20 @@ function showBoxOffice() {
                 "token": localStorage.getItem("token")
             }
         })
-            .done(function (responses) {
-                movies = responses;
-                const promises = [];
-                for (let i = 0; i < responses.length; i++) {
-                    promises.push(getPoster(responses[i]));
-                }
-                Promise.all(promises)
-                    .then((results) => {
-                        showGrid(results);
-                    });
+        .done(function(responses){
+            movies = responses;
+            const promisesImage = [];
+            const promisesDetail = [];
+            for (let i = 0; i < responses.length; i++) {
+                promisesImage.push(getPoster(responses[i]));
+                promisesDetail.push(getDetail(responses[i]));
+            }
+            Promise.all(promisesImage)
+            .then((images) => {
+                return Promise.all(promisesDetail)
             })
-            .fail(function (err) {
-                console.log(err);
+            .then((results) => {
+                showGrid(results);
             });
     });
 }
@@ -270,20 +273,21 @@ function searchMovie() {
                 "search": $("#search-box").val()
             }
         })
-            .done(function (responses) {
-                movies = responses;
-                const promises = [];
-                for (let i = 0; i < responses.length; i++) {
-                    promises.push(getPoster(responses[i]));
-                }
-                Promise.all(promises)
-                    .then((results) => {
-                        Swal.close()
-                        showGrid(results);
-                    });
+        .done(function(responses){
+            movies = responses;
+            const promisesImage = [];
+            const promisesDetail = [];
+            for (let i = 0; i < responses.length; i++) {
+                promisesImage.push(getPoster(responses[i]));
+                promisesDetail.push(getDetail(responses[i]));
+            }
+            Promise.all(promisesImage)
+            .then((images) => {
+                return Promise.all(promisesDetail)
             })
-            .fail(function (err) {
-                console.log(err);
+            .then((results) => {
+                Swal.close()
+                showGrid(results);
             });
     });
 }
