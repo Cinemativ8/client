@@ -311,7 +311,7 @@ function showGrid (responses) {
 
                     <span><a href="${responses[i].trailer}" target="_blank"> Go to Youtube</span>
                     
-                    <span><a href="#portfolioModal1" data-toggle="modal">Trailer</a></span>
+                    <span><a href="#portfolioModal${i}" data-toggle="modal">Trailer</a></span>
 
 
                     <a class="portfolio-link" data-toggle="modal" href="#portfolioModal${i}">
