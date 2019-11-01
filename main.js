@@ -77,6 +77,7 @@ function showCinema(){
             method: 'GET'
         })
         .done(response=>{
+            console.log(response)
             let mapData = {
                 address: response.json.candidates[0].formatted_adress,
                 lat: response.json.candidates[0].geometry.location.lat,
@@ -84,7 +85,7 @@ function showCinema(){
             }
             let place = {lat: mapData.lat, lng: mapData.lng}
             let map = new google.maps.Map(
-                document.getElementById('map'), {zoom: 12, center: place})
+                document.getElementById('map'), {zoom: 15, center: place})
             let marker = new google.maps.Marker({position : place, map : map})
         })
         .fail(error=>{
@@ -169,11 +170,16 @@ function showPopular() {
         })
         .done(function(responses){
             movies = responses;
-            const promises = [];
+            const promisesImage = [];
+            const promisesDetail = [];
             for (let i = 0; i < responses.length; i++) {
-                promises.push(getPoster(responses[i]));
+                promisesImage.push(getPoster(responses[i]));
+                promisesDetail.push(getDetail(responses[i]));
             }
-            Promise.all(promises)
+            Promise.all(promisesImage)
+            .then((images) => {
+                return Promise.all(promisesDetail)
+            })
             .then((results) => {
                 Swal.close()
                 showGrid(results);
@@ -199,11 +205,16 @@ function showMostPlayed() {
         })
         .done(function(responses){
             movies = responses;
-            const promises = [];
+            const promisesImage = [];
+            const promisesDetail = [];
             for (let i = 0; i < responses.length; i++) {
-                promises.push(getPoster(responses[i]));
+                promisesImage.push(getPoster(responses[i]));
+                promisesDetail.push(getDetail(responses[i]));
             }
-            Promise.all(promises)
+            Promise.all(promisesImage)
+            .then((images) => {
+                return Promise.all(promisesDetail)
+            })
             .then((results) => {
                 Swal.close()
                 showGrid(results);
@@ -229,11 +240,16 @@ function showBoxOffice() {
         })
         .done(function(responses){
             movies = responses;
-            const promises = [];
+            const promisesImage = [];
+            const promisesDetail = [];
             for (let i = 0; i < responses.length; i++) {
-                promises.push(getPoster(responses[i]));
+                promisesImage.push(getPoster(responses[i]));
+                promisesDetail.push(getDetail(responses[i]));
             }
-            Promise.all(promises)
+            Promise.all(promisesImage)
+            .then((images) => {
+                return Promise.all(promisesDetail)
+            })
             .then((results) => {
                 Swal.close()
                 showGrid(results);
@@ -262,11 +278,16 @@ function searchMovie() {
         })
         .done(function(responses){
             movies = responses;
-            const promises = [];
+            const promisesImage = [];
+            const promisesDetail = [];
             for (let i = 0; i < responses.length; i++) {
-                promises.push(getPoster(responses[i]));
+                promisesImage.push(getPoster(responses[i]));
+                promisesDetail.push(getDetail(responses[i]));
             }
-            Promise.all(promises)
+            Promise.all(promisesImage)
+            .then((images) => {
+                return Promise.all(promisesDetail)
+            })
             .then((results) => {
                 Swal.close()
                 showGrid(results);
