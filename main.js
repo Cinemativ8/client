@@ -8,6 +8,7 @@ $(document).ready(function(){
     }
     register()
     login()    
+    showCinema()
 })
 
 function register(){
@@ -70,7 +71,15 @@ function showCinema(){
             method: 'GET'
         })
         .done(response=>{
-            console.log(response)
+            let mapData = {
+                address: response.json.candidates[0].formatted_adress,
+                lat: response.json.candidates[0].geometry.location.lat,
+                lng: response.json.candidates[0].geometry.location.lng
+            }
+            let place = {lat: mapData.lat, lng: mapData.lng}
+            let map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 12, center: place})
+            let marker = new google.maps.Marker({position : place, map : map})
         })
         .fail(error=>{
             console.log(error)
