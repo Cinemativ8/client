@@ -1,76 +1,301 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/mdb.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="google-signin-client_id" content="705543491822-il8ttm3qm1ocu6ndj7bvhvlbssu3k5oj.apps.googleusercontent.com">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./style.css" type="text/css">
-  </head>
-  <body>
-      <!-- LOGIN FORM / FIRST PAGE -->
-    <div class="parentForm">
-        <div class="left-side">
-            <div class="desc">
-                <h1 id="title">Cinemativ8</h1>
-                <h3 id="description">Whatever movies you are looking for, you will find it here.</h3>
-            </div>
-        </div>
-        <div class="right-side">
-            <form id="loginForm" class="col-6 formLogin" style="padding: 40px;">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" id="emailLog" class="form-control" placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" id="passwordLog" class="form-control" placeholder="Password">
-                </div>
-                <div class="login">
-                    <button id="login" type="submit" class="btn btn-primary" style="display: inline;">Login</button>
-                    <div class="g-signin2" data-onsuccess="onSignIn" style="display: inline;"></div>
-                </div>
-                <div class="register">
-                    <p style="margin:10px 0px;">Dont have any account ?</p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Register</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- LOGIN FORM / FIRST PAGE -->
-    <!-- MODAL REGISTER -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Register</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="registerForm">
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Name</label>
-                            <input type="text" id="nameReg" class="form-control" id="exampleInputPassword1" placeholder="Enter Your Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="text" id="emailReg" class="form-control" aria-describedby="emailHelp" placeholder="Enter Your Email">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input id="passwordReg" type="password" class="form-control" placeholder="Enter Your Password">
-                        </div>
-                        <input id="register" type="submit" class="btn btn-primary"></input>
-                    </form>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+        <!-- LOGIN FORM / FIRST PAGE -->
+        <div class="parentForm">
+            <div class="left-side">
+                <div class="desc">
+                    <h1 id="title">Cinemativ8</h1>
+                    <h3 id="description">Whatever movies you are looking for, you will find it here.</h3>
                 </div>
             </div>
+            <div class="right-side">
+                <form id="loginForm" class="col-6 formLogin" style="padding: 40px;">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" id="emailLog" class="form-control" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" id="passwordLog" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="login">
+                        <button id="login" type="submit" class="btn btn-primary" style="display: inline;">Login</button>
+                        <div class="g-signin2" data-onsuccess="onSignIn" style="display: inline;"></div>
+                    </div>
+                    <div class="register">
+                        <p style="margin:10px 0px;">Dont have any account ?</p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Register</button>
+                    </div>
+                </form>
+            </div>
         </div>
+        <!-- LOGIN FORM / FIRST PAGE -->
+        <!-- MODAL REGISTER -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="registerForm">
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Name</label>
+                                <input type="text" id="nameReg" class="form-control" id="exampleInputPassword1" placeholder="Enter Your Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="text" id="emailReg" class="form-control" aria-describedby="emailHelp" placeholder="Enter Your Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input id="passwordReg" type="password" class="form-control" placeholder="Enter Your Password">
+                            </div>
+                            <input id="register" type="submit" class="btn btn-primary"></input>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MODAL REGISTER-->
+
+
+ <!-- navbar -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Cinemativ8</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item ">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+           
+            <!-- <form class="form-inline my-2 my-lg-0"> -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown link
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Trending</a>
+                <a class="dropdown-item" href="#">Popular</a>
+                <a class="dropdown-item" href="#">Most Played</a>
+                <a class="dropdown-item" href="#">Box Office</a>
+               
+
+
+              </div>
+            </li>
+
+            <li id="signout" class="nav-item" style="float: right;">
+              <a class="nav-link" href="#">SignOut</a>
+            </li>
+          <!-- </form> -->
+          </ul>
+        </div>
+      </nav>
+<!-- end navbar -->
+
+      <!-- search bar -->
+      <div class="wrap">
+            <div class="search">
+               <input type="text" class="searchTerm" placeholder="What are you looking for?">
+               <button type="submit" class="searchButton">
+                 <i class="fa fa-search"></i>
+              </button>
+            </div>
+         </div>
+         <!-- end search bar -->
+
+
+<!-- movie grid -->
+ 
+<div class="container">
+     <div class="movie row">
+                <div class="inner col-2 card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                          <img class="activator" src="./img/movie.jpg">
+                        </div>
+                        <div class="card-content">
+                          <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                          <p><a href="#">This is a link</a></p>
+                        </div>
+                        <div class="card-reveal">
+                          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        </div>
+                </div>
+                <div class="inner col-2 card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                          <img class="activator" src="./img/movie.jpg">
+                        </div>
+                        <div class="card-content">
+                          <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                          <p><a href="#">This is a link</a></p>
+                        </div>
+                        <div class="card-reveal">
+                          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        </div>
+                </div>
+                <div class="inner col-2 card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                          <img class="activator" src="./img/movie.jpg">
+                        </div>
+                        <div class="card-content">
+                          <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                          <p><a href="#">This is a link</a></p>
+                        </div>
+                        <div class="card-reveal">
+                          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        </div>
+                </div>       
+                <div class="inner col-2 card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                          <img class="activator" src="./img/movie.jpg">
+                        </div>
+                        <div class="card-content">
+                          <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                          <p><a href="#">This is a link</a></p>
+                        </div>
+                        <div class="card-reveal">
+                          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        </div>
+                </div>
+                <div class="inner col-2 card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="./img/movie.jpg">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                            <p><a href="#">This is a link</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        </div>
+                </div>
     </div>
-    <!-- MODAL REGISTER-->
+    <div class="movie row">
+            <div class="inner col-2 card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                      <img class="activator" src="./img/movie.jpg">
+                    </div>
+                    <div class="card-content">
+                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                      <p><a href="#">This is a link</a></p>
+                    </div>
+                    <div class="card-reveal">
+                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+            </div>
+            <div class="inner col-2 card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                      <img class="activator" src="./img/movie.jpg">
+                    </div>
+                    <div class="card-content">
+                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                      <p><a href="#">This is a link</a></p>
+                    </div>
+                    <div class="card-reveal">
+                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+            </div>
+            <div class="inner col-2 card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                      <img class="activator" src="./img/movie.jpg">
+                    </div>
+                    <div class="card-content">
+                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                      <p><a href="#">This is a link</a></p>
+                    </div>
+                    <div class="card-reveal">
+                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+            </div>       
+            <div class="inner col-2 card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                      <img class="activator" src="./img/movie.jpg">
+                    </div>
+                    <div class="card-content">
+                      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                      <p><a href="#">This is a link</a></p>
+                    </div>
+                    <div class="card-reveal">
+                      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+            </div>
+            <div class="inner col-2 card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="./img/movie.jpg">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                        <p><a href="#">This is a link</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+            </div>
+    </div>
+</div>
+<!-- end movie grid -->
+
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="main.js" ></script>
+
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
