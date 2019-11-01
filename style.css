@@ -71,8 +71,9 @@
   position: relative;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-body{
+  transform: translate(-50%, -50%); 
+}
+body { 
   background-image: url("https://image.freepik.com/free-photo/vintage-cinema-videocamera_23-2148133572.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -135,3 +136,12 @@ body{
   background-color: #dd4b39;
   color: white;
 }
+
+#map {
+  height: 300px;
+  width: 50%;
+  background-color: grey;
+  margin: 0px auto;
+
+}
+
