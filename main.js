@@ -83,14 +83,27 @@ function showCinema(){
         .done(response=>{
             console.log(response)
             let mapData = {
-                address: response.json.candidates[0].formatted_adress,
+                address: response.json.candidates[0].formatted_address,
                 lat: response.json.candidates[0].geometry.location.lat,
                 lng: response.json.candidates[0].geometry.location.lng
             }
             let place = {lat: mapData.lat, lng: mapData.lng}
             let map = new google.maps.Map(
                 document.getElementById('map'), {zoom: 15, center: place})
-            let marker = new google.maps.Marker({position : place, map : map})
+                var contentString = mapData.address;
+          
+            var infowindow = new google.maps.InfoWindow({
+              content: contentString
+            });
+          
+            var marker = new google.maps.Marker({
+              position: {lat: mapData.lat, lng:mapData.lng},
+              map: map,
+            });
+            marker.addListener('click', function() {
+              infowindow.open(map, marker);
+            });
+          
         })
         .fail(error=>{
             console.log(error)
