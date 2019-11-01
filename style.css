@@ -3,7 +3,7 @@
  }
 
  body {
-   background-image: url(yellow.jpg);
+   background-image: url(bluehome.jpg);
    background-repeat: no-repeat;
     background-size: cover;
  }
@@ -13,13 +13,16 @@
  }
 
 
+ card-title {
+  color: rgb(62, 146, 214) !important;
+ }
+
  .movie {
   margin: 35px 0px;
-  /* position: absolute; */
  }
 
  .inner {
-   margin: 0px 20px;
+   margin: 0px 10px;
  }
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
