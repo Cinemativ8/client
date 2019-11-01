@@ -88,6 +88,7 @@
         <!-- MODAL REGISTER-->
 
 
+  <div class="homepage">
  <!-- navbar -->
  <div id="main-page">
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -104,26 +105,28 @@
               <a class="nav-link" href="#">Features</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link" href="#">Google Maps</a>
             </li>
            
             <!-- <form class="form-inline my-2 my-lg-0"> -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown link
+                Options
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="#">Trending</a>
                 <a class="dropdown-item" href="#">Popular</a>
                 <a class="dropdown-item" href="#">Most Played</a>
                 <a class="dropdown-item" href="#">Box Office</a>
-               
-
-
+              
               </div>
             </li>
+            <div class="navbar-end">
+              <div class="navbar-item">
+
 
             <a href="#" onclick="signOut();" style="color:black">Sign out</a>
+
           <!-- </form> -->
           </ul>
         </div>
@@ -143,7 +146,6 @@
 
 
 <!-- movie grid -->
- 
 <div class="container">
      <div class="movie row">
                 <div class="inner col-2 card">
@@ -282,6 +284,44 @@
 </div>
 </div>
 <!-- end movie grid -->
+
+
+<!-- googlemaps -->
+<div class="googlemaps">
+  <div id="map"></div>
+</div>
+<!-- end googlemaps -->
+
+<!-- footer -->
+<footer>
+    <section class="fdb-block bg-dark">
+        <div class="container">
+          <div class="row text-center">
+            <div class="col-12">
+              <h1>Made with <i class="fas fa-heart text-danger"></i> by </h1>
+            </div>
+          </div>
+        </div>
+      </section>
+</footer>
+<!-- end footer -->
+
+</div>
+
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="main.js" ></script>
+
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
@@ -323,7 +363,21 @@
                 // }
             });
             }
+            function initMap() {
+              let place = {lat:	-6.263459, lng: 106.815903}
+              let map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 4, center: place})
+              let marker = new google.maps.Marker({position : place, map : map})
+            }
     </script>
+
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkoZnz8u6uszDXFRyMzajapv1_K9WlYAY&callback=initMap">
+
+    </script>
+
+
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -336,6 +390,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script src="main.js" ></script>
+
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

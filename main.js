@@ -8,7 +8,7 @@ $(document).ready(function(){
     }
     console.log('document is ready')
     register()
-    login()
+    login()    
 })
 
 function register(){
