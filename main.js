@@ -13,6 +13,10 @@ $(document).ready(function(){
     showMostPlayed()
     showBoxOffice()
     searchMovie()
+    $("#show-trending").click(function(event){
+        event.preventDefault();
+        showTrending();
+    })
 })
 
 function register(){
@@ -178,6 +182,7 @@ function showPopular() {
                 return Promise.all(promisesDetail)
             })
             .then((results) => {
+                console.log(results);
                 showGrid(results);
             });
         })
