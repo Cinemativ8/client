@@ -1,4 +1,11 @@
 $(document).ready(function(){
+    if(localStorage.getItem('token')){
+        $('#home-page').hide()
+        $('#main-page').show()
+    }else{
+        $('#home-page').show()
+        $('#main-page').hide() 
+    }
     console.log('document is ready')
     register()
     login()
@@ -24,7 +31,7 @@ function register(){
                 $('.modal-backdrop').hide()
             })
             .fail(error=>{
-                swal("Error job!", "You clicked the button!", "success");
+                swal("Error job!", "You clicked the button!", "error");
             })
         })
     })
@@ -34,7 +41,6 @@ function login(){
     $('#login').click(function(){
         let email = $('#emailLog').val()
         let password = $('#passwordLog').val()
-        console.log(email,password)
         $('#loginForm').submit(function(event){
             event.preventDefault()
             $.ajax({
@@ -45,7 +51,10 @@ function login(){
                 }
             })
             .done(response=>{
+                localStorage.setItem('token', response)
                 swal("Success!", "Login Success!", "success");
+                $('#home-page').hide()
+                $('#main-page').show()
             })
             .fail(error=>{
                 swal("Error!", "Login Failed!", "error");
