@@ -22,6 +22,8 @@ function register(){
                 swal("Success!", "Register Successfull!", "success");
                 $('#exampleModal').hide()
                 $('.modal-backdrop').hide()
+                $("#login-page").hide()
+                $("#home-page").show()
             })
             .fail(error=>{
                 swal("Error job!", "You clicked the button!", "success");
@@ -46,6 +48,8 @@ function login(){
             })
             .done(response=>{
                 swal("Success!", "Login Success!", "success");
+                $("#login-page").hide()
+                $("#home-page").show()
             })
             .fail(error=>{
                 swal("Error!", "Login Failed!", "error");
