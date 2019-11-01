@@ -19,12 +19,12 @@
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./style.css" type="text/css">
-    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
         <!-- LOGIN FORM / FIRST PAGE -->
+    <div id="home-page">
         <div class="parentForm">
             <div class="left-side">
                 <div class="desc">
@@ -84,11 +84,13 @@
                 </div>
             </div>
         </div>
+    </div>
         <!-- MODAL REGISTER-->
 
 
 <div class="homepage">
  <!-- navbar -->
+ <div id="main-page">
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Cinemativ8</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,11 +124,9 @@
             <div class="navbar-end">
               <div class="navbar-item">
 
-                <div id="signout" class="nav-item" style="float: right;">
-                  <a class="nav-link" href="#">SignOut</a>
-                </div>
-            </div>
-          </div>
+
+            <a href="#" onclick="signOut();" style="color:black">Sign out</a>
+
           <!-- </form> -->
           </ul>
         </div>
@@ -282,7 +282,9 @@
             </div>
     </div>
 </div>
+</div>
 <!-- end movie grid -->
+
 
 
 
@@ -307,7 +309,6 @@
     </div>
   </section>
 <!-- end nearest cinema -->
-
 
 
 
@@ -376,6 +377,13 @@
                 })
                 .done(token=>{
                     localStorage.setItem('token', token)
+                    if(localStorage.getItem('token')){
+                        $('#home-page').hide()
+                        $('#main-page').show()
+                    }else{
+                        $('#home-page').show()
+                        $('#main-page').hide() 
+                    }
                 })
                 .fail(error=>{
                     console.log(error)
@@ -385,9 +393,16 @@
             function signOut() {
                 var auth2 = gapi.auth2.getAuthInstance();
                 auth2.signOut().then(function () {
-                    localStorage.removeItem('token')
-                console.log('User signed out.');
-                });
+                localStorage.removeItem('token')
+                window.location.href = 'http://localhost:8080'
+                // if(localStorage.getItem('token')){
+                //     $('#home-page').hide()
+                //     $('#main-page').show()
+                // }else{
+                //     $('#home-page').show()
+                //     $('#main-page').hide() 
+                // }
+            });
             }
             function initMap() {
               let place = {lat:	-6.263459, lng: 106.815903}
@@ -397,11 +412,25 @@
             }
     </script>
 
+
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkoZnz8u6uszDXFRyMzajapv1_K9WlYAY&callback=initMap">
 
     </script>
 
+
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="main.js" ></script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
