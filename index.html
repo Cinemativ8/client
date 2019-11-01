@@ -313,14 +313,7 @@
                 var auth2 = gapi.auth2.getAuthInstance();
                 auth2.signOut().then(function () {
                 localStorage.removeItem('token')
-                window.location.href = 'http://localhost:8080'
-                // if(localStorage.getItem('token')){
-                //     $('#home-page').hide()
-                //     $('#main-page').show()
-                // }else{
-                //     $('#home-page').show()
-                //     $('#main-page').hide() 
-                // }
+                window.location.href = 'http://localhost:8080';
             });
             }
     </script>
