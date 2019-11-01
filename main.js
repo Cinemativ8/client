@@ -9,7 +9,9 @@ $(document).ready(function(){
     register()
     login()
     showTrending()
+
 })
+
 
 function register(){
     $('#register').click(function(){
@@ -133,7 +135,7 @@ function showGrid (responses) {
     $("#movies-row").empty();
     for (let i = 0; i < responses.length; i++) {
         $("#movies-row").append(
-        `<div class="inner col-2 card" style="margin-bottom:25px">
+        `<div  class="inner col-2 card" style="margin-bottom:25px">
             <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="${responses[i].Poster}">
             </div>
@@ -145,9 +147,9 @@ function showGrid (responses) {
                     <span>${responses[i].watchers} watchers</span>
                 </p>
             </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">
-                    ${responses[i].movie.title}
+            <div  class="card-reveal" >
+                <span   class="card-title grey-text text-darken-4">
+                   ${responses[i].movie.title}
                     <i class="material-icons right">close</i>
                 </span>
                 <p>
@@ -158,3 +160,4 @@ function showGrid (responses) {
         </div>`);
     }   
 }
+
