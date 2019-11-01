@@ -46,11 +46,13 @@ card {
   height: 20px;
   border-radius: 5px 0 0 5px;
   outline: none;
-  color:rgb(31, 68, 102);
+  color: white;
+  /* color:rgb(31, 68, 102); */
 }
 
 .searchTerm:focus{
-  color: rgb(31, 68, 102);
+  color: white;
+  /* color: rgb(31, 68, 102); */
 }
 
 .searchButton {

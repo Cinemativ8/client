@@ -9,6 +9,10 @@ $(document).ready(function(){
     register()
     login()
     showTrending()
+    showPopular()
+    showMostPlayed()
+    showBoxOffice()
+    searchMovie()
 })
 
 function register(){
@@ -129,9 +133,132 @@ function showTrending() {
     });
 }
 
+
+function showPopular() {
+    $('#show-popular').click(function (event) {
+        event.preventDefault();
+        let movies = [];
+        $.ajax({
+            method: "GET",
+            url: `http://localhost:3000/movies/popular`,
+            headers: {
+                "token": localStorage.getItem("token")
+            }
+        })
+        .done(function(responses){
+            movies = responses;
+            const promises = [];
+            for (let i = 0; i < responses.length; i++) {
+                promises.push(getPoster(responses[i]));
+            }
+            Promise.all(promises)
+            .then((results) => {
+                showGrid(results);
+            });
+        })
+        .fail(function(err){
+            console.log(err);
+        });
+    });
+}
+
+function showMostPlayed() {
+    $('#show-most-played').click(function (event) {
+        event.preventDefault();
+        let movies = [];
+        $.ajax({
+            method: "GET",
+            url: `http://localhost:3000/movies/most-played`,
+            headers: {
+                "token": localStorage.getItem("token")
+            }
+        })
+        .done(function(responses){
+            movies = responses;
+            const promises = [];
+            for (let i = 0; i < responses.length; i++) {
+                promises.push(getPoster(responses[i]));
+            }
+            Promise.all(promises)
+            .then((results) => {
+                showGrid(results);
+            });
+        })
+        .fail(function(err){
+            console.log(err);
+        });
+    });
+}
+
+function showBoxOffice() {
+    $('#show-boxoffice').click(function (event) {
+        event.preventDefault();
+        let movies = [];
+        $.ajax({
+            method: "GET",
+            url: `http://localhost:3000/movies/boxoffice`,
+            headers: {
+                "token": localStorage.getItem("token")
+            }
+        })
+        .done(function(responses){
+            movies = responses;
+            const promises = [];
+            for (let i = 0; i < responses.length; i++) {
+                promises.push(getPoster(responses[i]));
+            }
+            Promise.all(promises)
+            .then((results) => {
+                showGrid(results);
+            });
+        })
+        .fail(function(err){
+            console.log(err);
+        });
+    });
+}
+
+function searchMovie() {
+    $('#search-btn').click(function (event) {
+        event.preventDefault();
+        let movies = [];
+        $.ajax({
+            method: "POST",
+            url: `http://localhost:3000/movies/search`,
+            headers: {
+                "token": localStorage.getItem("token")
+            },
+            data: {
+                "search": $("#search-box").val()
+            }
+        })
+        .done(function(responses){
+            movies = responses;
+            const promises = [];
+            for (let i = 0; i < responses.length; i++) {
+                promises.push(getPoster(responses[i]));
+            }
+            Promise.all(promises)
+            .then((results) => {
+                showGrid(results);
+            });
+        })
+        .fail(function(err){
+            console.log(err);
+        });
+    });
+}
+
 function showGrid (responses) {
     $("#movies-row").empty();
     for (let i = 0; i < responses.length; i++) {
+        let watchers = "";
+        if (responses[i].watchers !== undefined) {
+            watchers = responses[i].watchers;
+        }
+        else if (responses[i].score !== undefined) {
+            watchers = responses[i].score
+        }
         $("#movies-row").append(
         `<div class="inner col-2 card" style="margin-bottom:25px">
             <div class="card-image waves-effect waves-block waves-light">
@@ -142,7 +269,7 @@ function showGrid (responses) {
                     ${responses[i].movie.title}
                 </span>
                 <p>
-                    <span>${responses[i].watchers} watchers</span>
+                    <span>${watchers} watchers</span>
                 </p>
             </div>
             <div class="card-reveal">
