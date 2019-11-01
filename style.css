@@ -42,7 +42,8 @@ body{
 }
 
 #description{
-  margin-left: 40px;
+  margin-left: 10px;
+  width: 550px;
   font-family: 'EB Garamond', serif;
   color: white;
   text-shadow: 1px 1px;
@@ -51,7 +52,7 @@ body{
 }
 
 #title{
-  font-size: 150px;
+  font-size: 120px;
   color: #EEFF41;
   text-shadow: 2px 2px;
 }

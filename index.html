@@ -78,13 +78,13 @@
                 var id_token = googleUser.getAuthResponse().id_token;
                 $.ajax({
                     method: 'POST',
-                    url: 'http://localhost:3000/user/login',
+                    url: 'http://localhost:3000/google-signin',
                     data:{
-                        googleToken: id_token
+                        idToken: id_token
                     }
                 })
                 .done(token=>{
-                    localStorage.setItem('token', token.jwt_token)
+                    localStorage.setItem('token', token)
                 })
                 .fail(error=>{
                     console.log(error)

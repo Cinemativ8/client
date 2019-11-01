@@ -12,7 +12,7 @@ function register(){
         $('#registerForm').submit(function(event){
             event.preventDefault()
             $.ajax({
-                url: 'http://localhost:3000/users',
+                url: 'http://localhost:3000/users/register',
                 method: 'POST',
                 data: {
                     name, email, password
@@ -34,11 +34,12 @@ function login(){
     $('#login').click(function(){
         let email = $('#emailLog').val()
         let password = $('#passwordLog').val()
+        console.log(email,password)
         $('#loginForm').submit(function(event){
             event.preventDefault()
             $.ajax({
-                url: 'http://localhost:3000/users',
-                method: 'GET',
+                url: 'http://localhost:3000/users/login',
+                method: 'POST',
                 data:{
                     email, password
                 }
