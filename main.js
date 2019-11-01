@@ -92,6 +92,7 @@ function showCinema(){
         })
     })
 }
+
 function getPoster(movie){
     return new Promise((resolve, reject) => {
         $.ajax({
@@ -107,7 +108,20 @@ function getPoster(movie){
         })
     });
 }
-
+function getDetail(movie){
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            method: "GET",
+            url: `http://localhost:3000/movies/detail/${movie.movie.ids.slug}`
+        })
+        .done(function (detail) {
+            movie["rating"] = detail.rating;
+            movie["overview"] = detail.overview;
+            movie["trailer"] = detail.trailer;
+            resolve(movie);
+        })
+    });
+}
 function showTrending() {
     let movies = [];
     $.ajax({
@@ -119,11 +133,16 @@ function showTrending() {
     })
     .done(function(responses){
         movies = responses;
-        const promises = [];
+        const promisesImage = [];
+        const promisesDetail = [];
         for (let i = 0; i < responses.length; i++) {
-            promises.push(getPoster(responses[i]));
+            promisesImage.push(getPoster(responses[i]));
+            promisesDetail.push(getDetail(responses[i]));
         }
-        Promise.all(promises)
+        Promise.all(promisesImage)
+        .then((images) => {
+            return Promise.all(promisesDetail)
+        })
         .then((results) => {
             showGrid(results);
         });
@@ -278,8 +297,9 @@ function showGrid (responses) {
                     <i class="material-icons right">close</i>
                 </span>
                 <p>
-                    Produced Year : ${responses[i].movie.year}
-                    IMDB Code : ${responses[i].movie.ids.imdb}
+                    <span>Rating : ${responses[i].rating}</span><br><br>
+                    <span>${responses[i].overview}</span><br><br>
+                    <span><a href="${responses[i].trailer}" target="_blank">Trailer</a></span>
                 </p>
             </div>
         </div>`);
