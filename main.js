@@ -124,6 +124,7 @@ function getDetail(movie){
 }
 function showTrending() {
     let movies = [];
+    Swal.showLoading()
     $.ajax({
         method: "GET",
         url: `http://localhost:3000/movies/trending`,
@@ -141,6 +142,7 @@ function showTrending() {
         }
         Promise.all(promisesImage)
         .then((images) => {
+            Swal.close()
             return Promise.all(promisesDetail)
         })
         .then((results) => {
@@ -156,6 +158,7 @@ function showTrending() {
 function showPopular() {
     $('#show-popular').click(function (event) {
         event.preventDefault();
+        Swal.showLoading()
         let movies = [];
         $.ajax({
             method: "GET",
@@ -172,6 +175,7 @@ function showPopular() {
             }
             Promise.all(promises)
             .then((results) => {
+                Swal.close()
                 showGrid(results);
             });
         })
@@ -184,6 +188,7 @@ function showPopular() {
 function showMostPlayed() {
     $('#show-most-played').click(function (event) {
         event.preventDefault();
+        Swal.showLoading()
         let movies = [];
         $.ajax({
             method: "GET",
@@ -200,6 +205,7 @@ function showMostPlayed() {
             }
             Promise.all(promises)
             .then((results) => {
+                Swal.close()
                 showGrid(results);
             });
         })
@@ -212,6 +218,7 @@ function showMostPlayed() {
 function showBoxOffice() {
     $('#show-boxoffice').click(function (event) {
         event.preventDefault();
+        Swal.showLoading()
         let movies = [];
         $.ajax({
             method: "GET",
@@ -228,6 +235,7 @@ function showBoxOffice() {
             }
             Promise.all(promises)
             .then((results) => {
+                Swal.close()
                 showGrid(results);
             });
         })
@@ -240,6 +248,7 @@ function showBoxOffice() {
 function searchMovie() {
     $('#search-btn').click(function (event) {
         event.preventDefault();
+        Swal.showLoading()
         let movies = [];
         $.ajax({
             method: "POST",
@@ -259,6 +268,7 @@ function searchMovie() {
             }
             Promise.all(promises)
             .then((results) => {
+                Swal.close()
                 showGrid(results);
             });
         })
