@@ -279,9 +279,17 @@ function showGrid (responses) {
         else if (responses[i].score !== undefined) {
             watchers = responses[i].score
         }
+
+   
+        console.log(responses[i].trailer.split('watch?v=')[0] + 'embed/' + responses[i].trailer.split('watch?v=')[1]);
+        
         $("#movies-row").append(
-        `<div  class="inner col-2 card" style="margin-bottom:25px">
+        `
+    
+
+        <div  class="inner col-2 card" style="margin-bottom:25px">
             <div class="card-image waves-effect waves-block waves-light">
+
                 <img class="activator" src="${responses[i].Poster}">
             </div>
             <div class="card-content">
@@ -300,10 +308,52 @@ function showGrid (responses) {
                 <p>
                     <span>Rating : ${responses[i].rating}</span><br><br>
                     <span>${responses[i].overview}</span><br><br>
-                    <span><a href="${responses[i].trailer}" target="_blank">Trailer</a></span>
+
+                    <span><a href="${responses[i].trailer}" target="_blank"> Go to Youtube</span>
+                    
+                    <span><a href="#portfolioModal1" data-toggle="modal">Trailer</a></span>
+
+
+                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal${i}">
+
+
+                    
                 </p>
             </div>
+
+
+            <div class="portfolio-modal modal fade" id="portfolioModal${i}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                  <div class="lr">
+                    <div class="rl"></div>
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                      <div class="modal-body">
+                        <!-- Project Details Go Here -->
+                        
+                        <div class="container">
+                          <iframe width="697" height="392" src="${responses[i].trailer.split('watch?v=')[0] + 'embed/' + responses[i].trailer.split('watch?v=')[1] }" frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                        </div>
+                     
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </div>`);
     }   
 }
+
+// https://www.youtube.com/   watch?v=     egDqXpwKwnk
 
