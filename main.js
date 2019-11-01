@@ -166,11 +166,16 @@ function showPopular() {
         })
         .done(function(responses){
             movies = responses;
-            const promises = [];
+            const promisesImage = [];
+            const promisesDetail = [];
             for (let i = 0; i < responses.length; i++) {
-                promises.push(getPoster(responses[i]));
+                promisesImage.push(getPoster(responses[i]));
+                promisesDetail.push(getDetail(responses[i]));
             }
-            Promise.all(promises)
+            Promise.all(promisesImage)
+            .then((images) => {
+                return Promise.all(promisesDetail)
+            })
             .then((results) => {
                 showGrid(results);
             });
@@ -194,11 +199,16 @@ function showMostPlayed() {
         })
         .done(function(responses){
             movies = responses;
-            const promises = [];
+            const promisesImage = [];
+            const promisesDetail = [];
             for (let i = 0; i < responses.length; i++) {
-                promises.push(getPoster(responses[i]));
+                promisesImage.push(getPoster(responses[i]));
+                promisesDetail.push(getDetail(responses[i]));
             }
-            Promise.all(promises)
+            Promise.all(promisesImage)
+            .then((images) => {
+                return Promise.all(promisesDetail)
+            })
             .then((results) => {
                 showGrid(results);
             });
@@ -222,11 +232,16 @@ function showBoxOffice() {
         })
         .done(function(responses){
             movies = responses;
-            const promises = [];
+            const promisesImage = [];
+            const promisesDetail = [];
             for (let i = 0; i < responses.length; i++) {
-                promises.push(getPoster(responses[i]));
+                promisesImage.push(getPoster(responses[i]));
+                promisesDetail.push(getDetail(responses[i]));
             }
-            Promise.all(promises)
+            Promise.all(promisesImage)
+            .then((images) => {
+                return Promise.all(promisesDetail)
+            })
             .then((results) => {
                 showGrid(results);
             });
@@ -253,11 +268,16 @@ function searchMovie() {
         })
         .done(function(responses){
             movies = responses;
-            const promises = [];
+            const promisesImage = [];
+            const promisesDetail = [];
             for (let i = 0; i < responses.length; i++) {
-                promises.push(getPoster(responses[i]));
+                promisesImage.push(getPoster(responses[i]));
+                promisesDetail.push(getDetail(responses[i]));
             }
-            Promise.all(promises)
+            Promise.all(promisesImage)
+            .then((images) => {
+                return Promise.all(promisesDetail)
+            })
             .then((results) => {
                 showGrid(results);
             });
