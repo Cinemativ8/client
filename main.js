@@ -7,7 +7,7 @@ $(document).ready(function(){
         $('#main-page').hide() 
     }
     register()
-    login()
+    login()    
 })
 
 function register(){
