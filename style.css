@@ -2,15 +2,15 @@
    margin: auto;
  }
 
- body {
+body {
    background-image: url(./img/bluehome.jpg);
    background-repeat: no-repeat;
     background-size: cover;
- }
+}
 
- card {
+card {
    position: relative;
- }
+}
 
 
  card-title {
