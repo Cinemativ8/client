@@ -296,6 +296,13 @@
                 })
                 .done(token=>{
                     localStorage.setItem('token', token)
+                    if(localStorage.getItem('token')){
+                        $('#home-page').hide()
+                        $('#main-page').show()
+                    }else{
+                        $('#home-page').show()
+                        $('#main-page').hide() 
+                    }
                 })
                 .fail(error=>{
                     console.log(error)
